@@ -4,7 +4,7 @@
   "description": "Backend developer test for OTF",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodemon -L"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/gabo963/otf_backend_test/issues"
   },
-  "homepage": "https://github.com/gabo963/otf_backend_test#readme"
+  "homepage": "https://github.com/gabo963/otf_backend_test#readme",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.1"
+  }
 }
