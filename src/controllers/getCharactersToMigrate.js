@@ -20,7 +20,8 @@ const getCharactersToMigrate = async () => {
                 lastname: character.name.split(" ")[1],
                 status_character: character.status,
                 character_species: character.species,
-                character_gender: character.gender
+                character_gender: character.gender,
+                location: parseInt(character.location.url.split('/')[5])
             }
         });
 
