@@ -1,0 +1,22 @@
+{
+  "name": "otf_backend_test",
+  "version": "1.0.0",
+  "description": "Backend developer test for OTF",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabo963/otf_backend_test.git"
+  },
+  "keywords": [
+    "hubspot"
+  ],
+  "author": "Gabriel Sarmiento",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabo963/otf_backend_test/issues"
+  },
+  "homepage": "https://github.com/gabo963/otf_backend_test#readme"
+}
