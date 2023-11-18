@@ -25,16 +25,10 @@ const getCharactersToMigrate = async () => {
         });
 
         characters = characters.concat(primeIds)
-
         page++;
     }
 
-
-    // trae los personajes
-
-    // recorre los personajes metiendo en la lista los datos que necesito
     return characters;
-
 };
 
 const isPrime = (n, i = 2) => {
