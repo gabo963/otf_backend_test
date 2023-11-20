@@ -28,7 +28,6 @@ const getCharactersToMigrate = async () => {
         characters = characters.concat(primeIds)
         page++;
     }
-
     return characters;
 };
 
