@@ -1,28 +1,31 @@
 const hubspot = require('@hubspot/api-client')
+require("dotenv").config()
 const {SOURCE_ACCESS_TOKEN} = process.env;
-const hubspotClient = new hubspot.Client({ accessToken: SOURCE_ACCESS_TOKEN })
 
 const postHubspotCompanies = async ( companies ) => {
+    
+    const hubspotClient = new hubspot.Client({ accessToken: SOURCE_ACCESS_TOKEN });
 
-    const response = await hubspotClient.apiRequest({
-        method: 'POST',
-        path: '/crm/v3/objects/companies',
-        body: {
+    const promises = []
+
+    for( let i = 0; i < companies.length; i++) {
+        const promise = hubspotClient.crm.companies.basicApi.create({
             "properties": {
-                "name": "La Empresa de Gabo",  
-                "domain": "gabo.com",
-                "city": "Cambridge",
-                "industry": "Technology",
-                "phone": "555-555-555",
-                "state": "Massachusetts",
-                "lifecyclestage": "51439524"
-            }
-            },
-        defaultJson: false
+                ...companies[i]
+        }});
+        promises.push(promise);
+    }
+
+    result = await Promise.all(promises);
+
+    result = result.map( response => {
+        return {
+            hbid: response.id,
+            rmid: response.properties.location_id
+        }
     });
-
-    console.log(response);
-
+    console.log(result);
+    return result;
 };
 
 module.exports = postHubspotCompanies;

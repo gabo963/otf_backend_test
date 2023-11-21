@@ -4,7 +4,23 @@ const postHubspotCompanies = require("../controllers/postHubspotCompanies");
 
 const checkMigration = async (req, res) => {
     try {
-        const response = await postHubspotCompanies({});
+
+        const companies = [
+            {
+                location_id: 1,
+                name: "Earth (C-137)",
+                location_type: "Planet",
+                dimension: "Dimension C-137"
+            },
+            {
+                location_id: 2,
+                name: "Abadango",
+                location_type: "Cluster",
+                dimension: "unknown"
+            },
+        ]
+
+        const response = await postHubspotCompanies(companies);
         res.status(200).json({response: "Hola Mundo, el backend esta funcionando."})
     } catch (error) {
         console.log(error)
