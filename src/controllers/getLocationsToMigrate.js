@@ -18,7 +18,7 @@ const getLocationsToMigrate = async () => {
                 name: location.name,
                 location_type: location.type,
                 dimension: location.dimension,
-                creation_date: location.created
+                creation_date: location.created.split("T")[0]
             }
         });
 

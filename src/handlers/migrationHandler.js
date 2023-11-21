@@ -10,13 +10,15 @@ const checkMigration = async (req, res) => {
                 location_id: 1,
                 name: "Earth (C-137)",
                 location_type: "Planet",
-                dimension: "Dimension C-137"
+                dimension: "Dimension C-137",
+                creation_date: "2017-11-10"
             },
             {
                 location_id: 2,
                 name: "Abadango",
                 location_type: "Cluster",
-                dimension: "unknown"
+                dimension: "unknown",
+                creation_date: "2012-11-10"
             },
         ]
 
