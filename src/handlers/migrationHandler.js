@@ -1,8 +1,10 @@
 const getCharactersToMigrate = require("../controllers/getCharactersToMigrate");
 const getLocationsToMigrate = require("../controllers/getLocationsToMigrate");
+const postHubspotCompanies = require("../controllers/postHubspotCompanies");
 
 const checkMigration = async (req, res) => {
     try {
+        const response = await postHubspotCompanies({});
         res.status(200).json({response: "Hola Mundo, el backend esta funcionando."})
     } catch (error) {
         console.log(error)
