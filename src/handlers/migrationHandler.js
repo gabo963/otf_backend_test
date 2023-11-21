@@ -1,9 +1,32 @@
 const getCharactersToMigrate = require("../controllers/getCharactersToMigrate");
 const getLocationsToMigrate = require("../controllers/getLocationsToMigrate");
 const postHubspotCompanies = require("../controllers/postHubspotCompanies");
+const postHubspotContacts = require("../controllers/postHubspotContacts");
 
 const checkMigration = async (req, res) => {
     try {
+
+        const contacts = [
+            {
+                character_id: 1,
+                firstname: "Rick",
+                lastname: "Sanchez",
+                status_character: "Alive",
+                character_species: "Human",
+                character_gender: "Male",
+                location: 1
+            },
+            {
+                character_id: 2,
+                firstname: "Morty",
+                lastname: "Smith",
+                status_character: "Alive",
+                character_species: "Human",
+                character_gender: "Male",
+                location: 3
+            }
+        ]
+
 
         const companies = [
             {
@@ -14,16 +37,21 @@ const checkMigration = async (req, res) => {
                 creation_date: "2017-11-10"
             },
             {
-                location_id: 2,
+                location_id: 3,
                 name: "Abadango",
                 location_type: "Cluster",
                 dimension: "unknown",
                 creation_date: "2012-11-10"
             },
         ]
-
-        const response = await postHubspotCompanies(companies);
-        res.status(200).json({response: "Hola Mundo, el backend esta funcionando."})
+        	
+        const contactResponse = await postHubspotContacts(contacts);
+        const companyResponse = await postHubspotCompanies(companies);
+        res.status(200).json({
+            response: "Hola Mundo, el backend esta funcionando.",
+            companies: companyResponse,
+            contacts: contactResponse
+        })
     } catch (error) {
         console.log(error)
         res.status(404).json({error: error.message});
