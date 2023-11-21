@@ -18,14 +18,13 @@ const postHubspotCompanies = async ( companies ) => {
 
     result = await Promise.all(promises);
 
-    result = result.map( response => {
-        return {
-            hbid: response.id,
-            rmid: response.properties.location_id
-        }
+    const locations = {};
+
+    result.forEach( response => {   
+        locations[response.properties.location_id] = response.id;
     });
-    console.log(result);
-    return result;
+
+    return locations;
 };
 
 module.exports = postHubspotCompanies;
