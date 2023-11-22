@@ -2,6 +2,7 @@ const getCharactersToMigrate = require("../controllers/getCharactersToMigrate");
 const getLocationsToMigrate = require("../controllers/getLocationsToMigrate");
 const postHubspotCompanies = require("../controllers/postHubspotCompanies");
 const postHubspotContacts = require("../controllers/postHubspotContacts");
+const migrationController = require("../controllers/migrationController");
 
 const checkMigration = async (req, res) => {
     try {
@@ -14,14 +15,13 @@ const checkMigration = async (req, res) => {
 
 const migrate = async (req, res) => {
     try {
-        const characters = await getCharactersToMigrate();
         const locations = await getLocationsToMigrate();
-        const companyResponse = await postHubspotCompanies(locations);
-        const contactResponse = await postHubspotContacts(characters, companyResponse);
+        const characters = await getCharactersToMigrate();
 
-        res.status(200).json({ companies: companyResponse, contacts: contactResponse });
+        const companyResponse = await migrationController(100, locations, postHubspotCompanies);
+        const charactersResponse = await migrationController(100, characters, postHubspotContacts, companyResponse);
 
-        // aca corre la migracion
+        res.status(200).json({ companies: companyResponse, contacts: charactersResponse });
     } catch (error) {
         console.log(error);
         res.status(404).json({ error: error.message });

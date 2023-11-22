@@ -18,7 +18,7 @@ const postHubspotCompanies = async (companies) => {
     const companiesObject = {};
 
     response.results.forEach((response) => {
-        companiesObject[response.properties.location_id] = response.id;
+        companiesObject[parseInt(response.properties.location_id)] = response.id;
     });
 
     return companiesObject;
