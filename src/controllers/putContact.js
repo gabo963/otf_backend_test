@@ -5,27 +5,9 @@ const { MIRROR_ACCESS_TOKEN } = process.env;
 const putContact = async (newContactInfo) => {
     const hubspotClient = new hubspot.Client({ accessToken: MIRROR_ACCESS_TOKEN });
 
-    const publicObjectSearchRequest = {
-        filterGroups: [
-            {
-                filters: [
-                    {
-                        propertyName: "character_id",
-                        operator: "EQ",
-                        value: `1`,
-                    },
-                ],
-            },
-        ],
-        properties: ["createdate", "firstname", "lastname", "character_id"],
-        limit: 10,
-        after: 0,
-    };
+    return newContactInfo.id;
 
-    const response = await hubspotClient.crm.contacts.searchApi.doSearch(publicObjectSearchRequest);
-
-    console.log(response);
-    return response;
+    // TODO: https://developers.hubspot.com/docs/api/crm/contacts Patch contact
 };
 
 module.exports = putContact;
