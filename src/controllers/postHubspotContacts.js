@@ -23,11 +23,11 @@ const postHubspotContacts = async (contacts, associations) => {
         };
     });
 
-    const call = await hubspotClient.crm.contacts.batchApi.create({
+    const response = await hubspotClient.crm.contacts.batchApi.create({
         inputs: contactsToBeSentOut,
     });
 
-    return call.results;
+    return response.results;
 };
 
 module.exports = postHubspotContacts;
