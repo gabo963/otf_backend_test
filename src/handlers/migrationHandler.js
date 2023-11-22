@@ -21,7 +21,12 @@ const migrate = async (req, res) => {
         const companyResponse = await migrationController(100, locations, postHubspotCompanies);
         const charactersResponse = await migrationController(100, characters, postHubspotContacts, companyResponse);
 
-        res.status(200).json({ companies: companyResponse, contacts: charactersResponse });
+        let companiesResponses = [];
+        locations.forEach((location) => {
+            companiesResponses.push({ id: companyResponse[location.location_id], ...location });
+        });
+
+        res.status(200).json({ result: "Success!", companies: companiesResponses, contacts: charactersResponse });
     } catch (error) {
         console.log(error);
         res.status(404).json({ error: error.message });
