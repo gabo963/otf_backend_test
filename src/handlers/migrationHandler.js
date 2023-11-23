@@ -16,7 +16,6 @@ const checkMigration = async (req, res) => {
     try {
         res.status(200).json({ response: "Hola Mundo, el backend esta funcionando. Esta es la pruieba para OTF de Gabriel Sarmiento" });
     } catch (error) {
-        console.log(error);
         res.status(404).json({ error: error.message });
     }
 };
@@ -59,7 +58,6 @@ const contactUpdate = async (req, res) => {
 
         res.status(200).json({ response: message, contact });
     } catch (error) {
-        console.log(error);
         res.status(404).json({ error: error.message });
     }
 };
@@ -82,7 +80,6 @@ const companyUpdate = async (req, res) => {
 
         res.status(200).json({ response: message, company });
     } catch (error) {
-        console.log(error);
         res.status(404).json({ error: error.message });
     }
 };
