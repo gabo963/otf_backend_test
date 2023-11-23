@@ -1,5 +1,6 @@
 <p><a target="_blank" href="https://app.eraser.io/workspace/KYdxoBrgBap2CP6eQmC2" id="edit-in-eraser-github-link"><img alt="Edit in Eraser" src="https://firebasestorage.googleapis.com/v0/b/second-petal-295822.appspot.com/o/images%2Fgithub%2FOpen%20in%20Eraser.svg?alt=media&amp;token=968381c8-a7e7-472a-8ed6-4a6626da5501"></a></p>
 
+# OTF API Backend Test
 Gabriel Sarmiento, OTF Backend Developer test.
 
 ---
@@ -15,24 +16,26 @@ The solution is hosted on render, the following link can be utilized to run thes
 3. `POST /contactUpdate` - This endpoint is designed to be called by the Source Hubspot's application webhook, it will update an specific contact detail's on the mirror instance.
 4. `POST /companyUpdate` - This endpoint is designed to be called by the Source Hubspot's application webhook, it will update an specific company detail's on the mirror instance.
 ### Migration
+> Warning: Workflows should be turned off when migrating, When creating many records, the Hubspot Secondly Limit will stop more than 15 calls per second. 
+
 Migrations should normally be started by a shell command on a server, but for the purpose of the test I have made it into a endpoint. `POST /migrate` 
 
 The General idea can be seen below, The OTF API Extracts data from the Rick & Morty API and posts it into the Hubspots Source account
 
-![Migration Diagram](/.eraser/KYdxoBrgBap2CP6eQmC2___q6qlbL6mFhMEOI5uxTMlimftZCM2___---figure---5UKEdSVrHl9VL26xZDh01---figure---o2X-eR3i2cBpZqfmP5ea8w.png "Migration Diagram")
+![Migration Diagram](undefined "Migration Diagram")
 
 [﻿View on Eraser](https://app.eraser.io/workspace/KYdxoBrgBap2CP6eQmC2?elements=o2X-eR3i2cBpZqfmP5ea8w) 
 
 The OTF API gets both locations and characters, processes them to build associations and maps them to the hubspot properties.
 
-![OTF Migration DIagram](/.eraser/KYdxoBrgBap2CP6eQmC2___q6qlbL6mFhMEOI5uxTMlimftZCM2___---figure---15fT7x2aDvKHvhtBNEpEO---figure---q2cxhRCQbcGzy0boQ48IPQ.png "OTF Migration DIagram")
+![OTF Migration DIagram](undefined "OTF Migration DIagram")
 
 It has a batch balancer to create the records on hubspot since the batch api only allows 100 items at a time.
 
 ### Integration
 On the integration I leverage the two workflows on the Source Hubspot Instance to shoot webhooks every time a record of either contact or company is changed. When this happens the two endpoints are triggered. If the changed record already exists on the Mirror instance (key is the Rick & Morty ID) then the record is updated, on the contrary if no record exists yet on the mirror it is created.
 
-![Integration Diagram](/.eraser/KYdxoBrgBap2CP6eQmC2___q6qlbL6mFhMEOI5uxTMlimftZCM2___---figure---uj_e7yidis4OCMC37rcDj---figure---ka0Yhxkeq_AST1mnv3S1UQ.png "Integration Diagram")
+![Integration Diagram](undefined "Integration Diagram")
 
 #### Endpoints
 1. `POST /contactUpdate` - This endpoint is designed to be called by the Source Hubspot's application webhook, it will update an specific contact detail's on the mirror instance.
