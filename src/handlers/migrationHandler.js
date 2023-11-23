@@ -48,7 +48,6 @@ const contactUpdate = async (req, res) => {
 
         const exist = await getContact(character_id);
         let contact = {};
-        console.log(exist);
 
         if (exist.total > 0) {
             contact = await putContact({ id: exist.results[0].id, character_id, firstname, lastname, gender, status_character, character_species, createdate });
@@ -67,7 +66,21 @@ const contactUpdate = async (req, res) => {
 
 const companyUpdate = async (req, res) => {
     try {
-        //TODO: copy contact update, update workflow on hubspot
+        const { name, dimension, createdate, location_id, creation_date, location_type } = req.body;
+        let message = "";
+
+        const exist = await getCompany(location_id);
+        let company = {};
+
+        if (exist.total > 0) {
+            company = await putCompany({ id: exist.results[0].id, name, dimension, createdate, location_id, creation_date, location_type });
+            message = `company with id ${company.id} has been updated`;
+        } else {
+            company = await postCompany({});
+            message = `company with id ${company.id} has been created`;
+        }
+
+        res.status(200).json({ response: message, company });
     } catch (error) {
         console.log(error);
         res.status(404).json({ error: error.message });
