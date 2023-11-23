@@ -2,14 +2,14 @@ const hubspot = require("@hubspot/api-client");
 require("dotenv").config();
 const { MIRROR_ACCESS_TOKEN } = process.env;
 
-const postContact = async (newContactInfo) => {
+const postCompany = async (newCompanyInfo) => {
     const hubspotClient = new hubspot.Client({ accessToken: MIRROR_ACCESS_TOKEN });
 
-    const response = await hubspotClient.crm.contacts.basicApi.create({
-        properties: newContactInfo,
+    const response = await hubspotClient.crm.companies.basicApi.create({
+        properties: newCompanyInfo,
     });
 
     return response;
 };
 
-module.exports = postContact;
+module.exports = postCompany;

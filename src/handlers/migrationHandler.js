@@ -76,7 +76,7 @@ const companyUpdate = async (req, res) => {
             company = await putCompany({ id: exist.results[0].id, name, dimension, createdate, location_id, creation_date, location_type });
             message = `company with id ${company.id} has been updated`;
         } else {
-            company = await postCompany({});
+            company = await postCompany({ name, dimension, createdate, location_id, creation_date, location_type });
             message = `company with id ${company.id} has been created`;
         }
 
