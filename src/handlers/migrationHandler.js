@@ -50,7 +50,7 @@ const contactUpdate = async (req, res) => {
         let contact = {};
 
         if (exist.total > 0) {
-            contact = await putContact({ id: exist.results[0].id, character_id, firstname, lastname, gender, status_character, character_species, createdate });
+            contact = await putContact({ id: exist.results[0].id, character_id, firstname, lastname, gender, status_character, character_species });
             message = `contact with id ${contact.id} has been updated`;
         } else {
             contact = await postContact({ character_id, firstname, lastname, gender, status_character, character_species });
