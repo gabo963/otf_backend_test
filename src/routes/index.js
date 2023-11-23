@@ -4,13 +4,15 @@ const { checkMigration, migrate, companyUpdate, contactUpdate } = require("../ha
 
 const router = Router();
 
-// routes start_migratiob
-
 router.get("/", checkMigration);
+
+// routes start_migration
+
 router.post("/migrate", migrate);
-router.post("/contactUpdate", contactUpdate);
-router.post("/companyUpdate", companyUpdate);
 
 // routes webhook
+
+router.post("/contactUpdate", contactUpdate);
+router.post("/companyUpdate", companyUpdate);
 
 module.exports = router;
