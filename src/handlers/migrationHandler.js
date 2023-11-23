@@ -53,7 +53,7 @@ const contactUpdate = async (req, res) => {
             contact = await putContact({ id: exist.results[0].id, character_id, firstname, lastname, gender, status_character, character_species, createdate });
             message = `contact with id ${contact.id} has been updated`;
         } else {
-            contact = await postContact({ character_id, firstname, lastname, gender, status_character, character_species, createdate });
+            contact = await postContact({ character_id, firstname, lastname, gender, status_character, character_species });
             message = `contact with id ${contact.id} has been created`;
         }
 
@@ -73,10 +73,10 @@ const companyUpdate = async (req, res) => {
         let company = {};
 
         if (exist.total > 0) {
-            company = await putCompany({ id: exist.results[0].id, name, dimension, createdate, location_id, creation_date, location_type });
+            company = await putCompany({ id: exist.results[0].id, name, dimension, location_id, creation_date, location_type });
             message = `company with id ${company.id} has been updated`;
         } else {
-            company = await postCompany({ name, dimension, createdate, location_id, creation_date, location_type });
+            company = await postCompany({ name, dimension, location_id, creation_date, location_type });
             message = `company with id ${company.id} has been created`;
         }
 
