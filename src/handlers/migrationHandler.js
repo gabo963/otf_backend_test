@@ -43,7 +43,7 @@ const migrate = async (req, res) => {
 
 const contactUpdate = async (req, res) => {
     try {
-        const { character_id, firstname, lastname, gender, status_character, character_species, createdate } = req.body;
+        const { character_id, firstname, lastname, gender, status_character, character_species } = req.body;
         let message = "";
 
         const exist = await getContact(character_id);
@@ -66,7 +66,7 @@ const contactUpdate = async (req, res) => {
 
 const companyUpdate = async (req, res) => {
     try {
-        const { name, dimension, createdate, location_id, creation_date, location_type } = req.body;
+        const { name, dimension, location_id, creation_date, location_type } = req.body;
         let message = "";
 
         const exist = await getCompany(location_id);
