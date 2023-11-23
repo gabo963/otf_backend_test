@@ -14,7 +14,7 @@ const postCompany = require("../controllers/companyIntegration/postCompany");
 
 const checkMigration = async (req, res) => {
     try {
-        res.status(200).json({ response: "Hola Mundo, el backend esta funcionando. Esta es la pruieba para OTF de Gabriel Sarmiento" });
+        res.status(200).json({ response: "Hola Mundo, el backend esta funcionando. Esta es la prueba para OTF de Gabriel Sarmiento" });
     } catch (error) {
         res.status(404).json({ error: error.message });
     }
