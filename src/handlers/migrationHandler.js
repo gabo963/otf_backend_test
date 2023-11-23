@@ -5,6 +5,7 @@ const postHubspotContacts = require("../controllers/postHubspotContacts");
 const migrationController = require("../controllers/migrationController");
 const getContact = require("../controllers/getContact");
 const putContact = require("../controllers/putContact");
+const postContact = require("../controllers/postContact");
 
 const checkMigration = async (req, res) => {
     try {
@@ -45,11 +46,10 @@ const contactUpdate = async (req, res) => {
         console.log(exist);
 
         if (exist.total > 0) {
-            // TODO: putContact
             contact = await putContact({ id: exist.results[0].id, character_id, firstname, lastname, gender, status_character, character_species, createdate });
-            message = `contact with id ${exist.results[0].id} has been updated`;
+            message = `contact with id ${contact.id} has been updated`;
         } else {
-            // TODO: postContact
+            contact = await postContact({ character_id, firstname, lastname, gender, status_character, character_species, createdate });
             message = `contact with id ${contact.id} has been created`;
         }
 

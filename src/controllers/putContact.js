@@ -5,9 +5,13 @@ const { MIRROR_ACCESS_TOKEN } = process.env;
 const putContact = async (newContactInfo) => {
     const hubspotClient = new hubspot.Client({ accessToken: MIRROR_ACCESS_TOKEN });
 
-    return newContactInfo.id;
+    const { character_id, firstname, lastname, gender, status_character, character_species, createdate } = newContactInfo;
 
-    // TODO: https://developers.hubspot.com/docs/api/crm/contacts Patch contact
+    const response = await hubspotClient.crm.contacts.basicApi.update(newContactInfo.id, {
+        properties: { character_id, firstname, lastname, gender, status_character, character_species, createdate },
+    });
+
+    return response;
 };
 
 module.exports = putContact;
