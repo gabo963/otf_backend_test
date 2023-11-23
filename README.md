@@ -22,13 +22,13 @@ Migrations should normally be started by a shell command on a server, but for th
 
 The General idea can be seen below, The OTF API Extracts data from the Rick & Morty API and posts it into the Hubspots Source account
 
-![Migration Diagram](undefined "Migration Diagram")
+![Migration Diagram](/.eraser/KYdxoBrgBap2CP6eQmC2___q6qlbL6mFhMEOI5uxTMlimftZCM2___---figure---FuYWzLDlQR09CTUYFDImv---figure---o2X-eR3i2cBpZqfmP5ea8w.png "Migration Diagram")
 
 [﻿View on Eraser](https://app.eraser.io/workspace/KYdxoBrgBap2CP6eQmC2?elements=o2X-eR3i2cBpZqfmP5ea8w) 
 
 The OTF API gets both locations and characters, processes them to build associations and maps them to the hubspot properties.
 
-![OTF Migration DIagram](undefined "OTF Migration DIagram")
+![OTF Migration DIagram](/.eraser/KYdxoBrgBap2CP6eQmC2___q6qlbL6mFhMEOI5uxTMlimftZCM2___---figure---qUI_no6AXmQKdOrvCCRtS---figure---q2cxhRCQbcGzy0boQ48IPQ.png "OTF Migration DIagram")
 
 It has a batch balancer to create the records on hubspot since the batch api only allows 100 items at a time.
 
