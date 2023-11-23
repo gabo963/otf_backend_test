@@ -1,9 +1,9 @@
 const hubspot = require("@hubspot/api-client");
 require("dotenv").config();
-const { SOURCE_ACCESS_TOKEN, MIRROR_ACCESS_TOKEN } = process.env;
+const { MIRROR_ACCESS_TOKEN } = process.env;
 
 const getContact = async (contactRmId) => {
-    const hubspotClient = new hubspot.Client({ accessToken: SOURCE_ACCESS_TOKEN });
+    const hubspotClient = new hubspot.Client({ accessToken: MIRROR_ACCESS_TOKEN });
 
     const publicObjectSearchRequest = {
         filterGroups: [

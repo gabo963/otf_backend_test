@@ -1,11 +1,16 @@
-const getCharactersToMigrate = require("../controllers/getCharactersToMigrate");
-const getLocationsToMigrate = require("../controllers/getLocationsToMigrate");
-const postHubspotCompanies = require("../controllers/postHubspotCompanies");
-const postHubspotContacts = require("../controllers/postHubspotContacts");
-const migrationController = require("../controllers/migrationController");
-const getContact = require("../controllers/getContact");
-const putContact = require("../controllers/putContact");
-const postContact = require("../controllers/postContact");
+const getCharactersToMigrate = require("../controllers/migration/getCharactersToMigrate");
+const getLocationsToMigrate = require("../controllers/migration/getLocationsToMigrate");
+const postHubspotCompanies = require("../controllers/migration/postHubspotCompanies");
+const postHubspotContacts = require("../controllers/migration/postHubspotContacts");
+const migrationController = require("../controllers/migration/migrationController");
+
+const getContact = require("../controllers/contactIntegration/getContact");
+const putContact = require("../controllers/contactIntegration/putContact");
+const postContact = require("../controllers/contactIntegration/postContact");
+
+const getCompany = require("../controllers/companyIntegration/getCompany");
+const putCompany = require("../controllers/companyIntegration/putCompany");
+const postCompany = require("../controllers/companyIntegration/postCompany");
 
 const checkMigration = async (req, res) => {
     try {
