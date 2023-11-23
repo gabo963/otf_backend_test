@@ -19,17 +19,39 @@ Migrations should normally be started by a shell command on a server, but for th
 
 The General idea can be seen below, The OTF API Extracts data from the Rick & Morty API and posts it into the Hubspots Source account
 
-![Migration Diagram](/.eraser/KYdxoBrgBap2CP6eQmC2___q6qlbL6mFhMEOI5uxTMlimftZCM2___---figure---La8Z40ZsiMfItn1EKDkKW---figure---o2X-eR3i2cBpZqfmP5ea8w.png "Migration Diagram")
+![Migration Diagram](undefined "Migration Diagram")
 
 [﻿View on Eraser](https://app.eraser.io/workspace/KYdxoBrgBap2CP6eQmC2?elements=o2X-eR3i2cBpZqfmP5ea8w) 
 
 The OTF API gets both locations and characters, processes them to build associations and maps them to the hubspot properties.
 
-![OTF Migration DIagram](/.eraser/KYdxoBrgBap2CP6eQmC2___q6qlbL6mFhMEOI5uxTMlimftZCM2___---figure---dR_vF3PYwGVmkXebeLwAl---figure---q2cxhRCQbcGzy0boQ48IPQ.png "OTF Migration DIagram")
+![OTF Migration DIagram](undefined "OTF Migration DIagram")
 
 It has a batch balancer to create the records on hubspot since the batch api only allows 100 items at a time.
 
 ### Integration
+On the integration I leverage the two workflows on the Source Hubspot Instance to shoot webhooks every time a record of either contact or company is changed. When this happens the two endpoints are triggered. If the changed record already exists on the Mirror instance (key is the Rick & Morty ID) then the record is updated, on the contrary if no record exists yet on the mirror it is created.
+
+![Integration Diagram](undefined "Integration Diagram")
+
+#### Endpoints
+1. `POST /contactUpdate` - This endpoint is designed to be called by the Source Hubspot's application webhook, it will update an specific contact detail's on the mirror instance.
+2. `POST /companyUpdate` - This endpoint is designed to be called by the Source Hubspot's application webhook, it will update an specific company detail's on the mirror instance.
+---
+
+## Technologies Used
+The OTF API was built using express.js 
+
+Multiple relevant packages where employed:
+
+[﻿developers.hubspot.com/docs/api/overview](https://developers.hubspot.com/docs/api/overview) 
+
+[﻿www.npmjs.com/package/@hubspot/api-client](https://www.npmjs.com/package/@hubspot/api-client) 
+
+[﻿rickandmortyapi.com/documentation/#rest](https://rickandmortyapi.com/documentation/#rest) 
+
+
+
 
 
 
